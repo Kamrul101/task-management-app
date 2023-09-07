@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProviders";
 // import { AuthContext } from "../../../Providers/AuthProviders";
 
 
 const Register = () => {
-    const {createUser}= useContext(AuthContext);
-    
+    const {createUser,updateUserProfile}= useContext(AuthContext);
+    const navigate = useNavigate();
+   const location = useLocation();
+   const from = location.state?.from?.pathname || '/';
     const handleRegister = event =>{
         event.preventDefault();
         const form = event.target;
@@ -14,13 +16,14 @@ const Register = () => {
         const email = form.email.value;
         const photo = form.photo.value;
         const password = form.password.value;
-        const bio = form.bio.value;
-        console.log(name,email,password,photo,bio);
+        // const bio = form.bio.value;
+        console.log(name,email,password,photo);
         createUser(email,password)
         .then(result=>{
             const registeredUser = result.user;
-            updateUserProfile(result.name, result.photo,result.bio)
+            updateUserProfile(name, photo)
             console.log(registeredUser);
+            navigate(from, {replace:true})
         })
         .catch(error=>{
             console.log(error.message);
@@ -80,24 +83,16 @@ const Register = () => {
             />
             
           </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Bio</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Enter short bio"
-              name="bio"
-              className="input input-bordered"
-            />
-            
-          </div>
+          
           <div className="form-control mt-6">
             
             <input className="btn btn-primary" type="submit" value="Sign up" />
           </div>
           </form>
           <p className="my-4 text-center">Already have an account? <Link className="text-orange-600 text-bold" to='/login'>Login</Link></p>
+          <div>
+            <p className="btn btn-secondary w-full"><Link >Go to Home</Link></p>
+          </div>
           
         </div>
       </div>
