@@ -1,27 +1,35 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../../Providers/AuthProviders";
 
 const AddTask = () => {
-    // const [inputData,setInputData]=useState([]);
+    
+    const{user}=useContext(AuthContext)
     const [items,setItems] = useState([]);
+    
+    
     const handleSubmit = event =>{
         event.preventDefault();
+        const email = user?.email
         const form = event.target;
         const title = form.title.value;
         const desc = form.desc.value;
         const date = form.date.value;
         const option= form.priority.value;
         const members = Array.from(form.member).filter((checkbox) =>checkbox.checked).map((checkbox) => checkbox.value);
-        const taskData = {title,desc,date, option,members};
+        const taskData = {title,desc,date, option,members,email};
         
-        // setInputData(inputData);
+
+
         setItems((prevItems) => [...prevItems,taskData] );
         const updatedItems = [...items, taskData];
+        
+        
         localStorage.setItem('tasks', JSON.stringify(updatedItems));
+        
     }
-    const addItem = ()=>{
+  
 
-    }
-    // console.log(items);
+  
   return (
     <div className="card w-96 bg-gray-300 shadow-xl p-4">
       <form onSubmit={handleSubmit}>
@@ -58,7 +66,7 @@ const AddTask = () => {
             <span className="label-text font-semibold">Pick priority</span>
           </label>
           <select name="priority" className="select select-bordered font-semibold">
-            <option disabled selected>
+            <option disabled >
               Pick one
             </option>
             <option>High</option>
@@ -90,7 +98,7 @@ const AddTask = () => {
 </div>
 
         <div className="form-control mt-6">
-          <input className="btn btn-primary"  type="submit" value="Submit Task" />
+          <input className="btn btn-primary"   type="submit" value="Submit Task" />
         </div>
       </form>
     </div>

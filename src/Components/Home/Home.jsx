@@ -17,7 +17,7 @@ const Home = () => {
   <div className="drawer-content flex flex-col items-center justify-center bg-blue-950">
     <Outlet></Outlet>
     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden mt-40">Open drawer</label>
-    {/* <AddTask></AddTask> */}
+    
   
   </div> 
   <div className="drawer-side">
@@ -27,13 +27,13 @@ const Home = () => {
     <ul className="menu p-4 w-80 min-h-full bg-gray-300 text-base-content pt-40">
       {/* Sidebar content here */}
       <li className='my-3'><Link className='text-xl font-semibold bg-rose-300' to='/addTask'>Add Task <FaPlus className='bg-gray-300 rounded-full text-2xl'></FaPlus></Link></li>
-      <li><Link className='text-xl font-semibold bg-blue-300' to='/task'>Show Task</Link></li>
+      <li><Link className='text-xl font-semibold bg-blue-300 mb-3' to='/task'>Show Task</Link></li>
       
       <li>
         {user && (
             <>
               {user.photoURL == null ? (
-                <FaUserCircle className="text-5xl mr-2"></FaUserCircle>
+                <FaUserCircle className="text-7xl mr-2"></FaUserCircle>
               ) : (
                 <div
                 >
