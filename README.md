@@ -1,8 +1,35 @@
-# React + Vite
+# Technology used
+- ReactJS
+- Tailwind css
+- Vite
+- Firebase
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## Deployment
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+To deploy this project run
+- Clone the project from gitHub or you can download the zip file
+- Open it with Visual Studio Code
+- Then follow the steps
+
+- Clone the client repository
+```bash
+  git clone https://github.com/Kamrul101/task-management-app
+```
+
+
+- Go to the client project directory
+
+```bash
+  cd my-project
+```
+
+- Install dependencies
+
+```bash
+  npm install
+```
+
+
+## 🔗Live Website Link
+(https://task-management-app-7bc56.web.app/)
